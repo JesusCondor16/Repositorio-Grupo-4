@@ -4,16 +4,15 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
-import modelo.UsuarioArreglo;
-import vista.frmIngreso;
-import vista.frmPrincipal;
+import modelo.Empleado;
+import modelo.EmpleadoArreglo;/*import vista.frmIngreso;
+import vista.frmPrincipal;*/
 
 public class ControladorLogin {
-    UsuarioArreglo modelo;
-    frmIngreso vista;
+    EmpleadoArreglo modelo;
+    /*frmIngreso vista;
 
-    public ControladorLogin(UsuarioArreglo modelo, 
+    public ControladorLogin(EmpleadoArreglo modelo, 
             frmIngreso vista) {
         this.modelo = modelo;
         this.vista = vista;
@@ -27,7 +26,7 @@ public class ControladorLogin {
         this.vista.btnIngresar.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Usuario u = modelo.validar(vista.txtUsuairo.getText(), 
+                Empleado u = modelo.validar(vista.txtUsuairo.getText(), 
                             vista.txtClave.getText() );
                 if (u != null){
                     //JOptionPane.showMessageDialog( vista, u );
@@ -56,5 +55,5 @@ public class ControladorLogin {
         vista.txtClave.setText("");
         vista.txtUsuairo.setText("");
         
-    }
+    }*/
 }

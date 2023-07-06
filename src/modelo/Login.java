@@ -21,7 +21,7 @@ public class Login {
     public void setClave(String clave) {
         this.clave = clave;
     }
-    
+
     public boolean validar(String usuario, String clave){
         boolean resultado = false;
         if(this.usuario.equalsIgnoreCase(usuario) &&
@@ -30,6 +30,4 @@ public class Login {
         }
         return resultado;
     }
-    
-    
 }

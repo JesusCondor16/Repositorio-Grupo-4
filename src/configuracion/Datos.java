@@ -1,9 +1,9 @@
 
 package configuracion;
 
-import modelo.UsuarioArreglo;
+import modelo.EmpleadoArreglo;
 
 public class Datos {
-    public static UsuarioArreglo usuarios = new UsuarioArreglo(10);
+    public static EmpleadoArreglo usuarios = new EmpleadoArreglo(10);
     
 }

@@ -3,19 +3,18 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import modelo.Usuario;
-import modelo.UsuarioArreglo;
-import vista.frmIngreso;
-import vista.frmPrincipal;
+import modelo.Empleado;
+import modelo.EmpleadoArreglo;
+/*import vista.frmIngreso;*/
 
 public class ControladorPrincipal {
-    Usuario modelo;
-    frmPrincipal vista;
+    Empleado modelo;
+    /*frmPrincipal vista;
 
-    public ControladorPrincipal(Usuario modelo, frmPrincipal vista) {
+    public ControladorPrincipal(Empleado modelo, frmPrincipal vista) {
         this.modelo = modelo;
         this.vista = vista;
-        vista.lblUsuario.setText("Usuario:"+ modelo.getNombre());
+        vista.lblUsuario.setText("Empleado:"+ modelo.getNombre());
         
         this.vista.btnSalir.addActionListener(new ActionListener() {
 
@@ -34,5 +33,5 @@ public class ControladorPrincipal {
     public void iniciar(){
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
-    }
+    }*/
 }
