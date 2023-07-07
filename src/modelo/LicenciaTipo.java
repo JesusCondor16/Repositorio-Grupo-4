@@ -1,13 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
+
 package modelo;
 
-/**
- *
- * @author Emerson
- */
 public class LicenciaTipo {
-    
+    private String tipo;
+    private String motivo;
+
+    public LicenciaTipo(String tipo, String motivo) {
+        this.tipo = tipo;
+        this.motivo = motivo;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    // Otros métodos y lógica adicional según sea necesario
 }
