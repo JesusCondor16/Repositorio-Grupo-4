@@ -43,4 +43,14 @@ public class EmpleadoArreglo {
         }
         return null;
     }
+    public Empleado validar(String usuario, String clave){
+        Empleado resultado=null;
+        for(Empleado u: this.empleados){
+            if(u!=null && u.ingresarSistema(usuario, clave)){
+                resultado = u;
+                break;
+            }
+        }
+        return resultado;
+    }
 }
