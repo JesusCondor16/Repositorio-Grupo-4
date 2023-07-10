@@ -14,7 +14,7 @@ public class Empleado {
         this.clave = clave;
     }
     
-    public boolean validar(){
+    public boolean ingresarSistema(String usuario, String clave){
         boolean resultado = false;
         if(this.usuario.equalsIgnoreCase(usuario) &&
                 this.clave.equals(clave)){

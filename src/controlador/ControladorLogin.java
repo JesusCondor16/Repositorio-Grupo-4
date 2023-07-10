@@ -5,18 +5,18 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
-import modelo.EmpleadoArreglo;/*import vista.frmIngreso;
-import vista.frmPrincipal;*/
+import modelo.EmpleadoArreglo;
+import vista.frmIngreso;
 
 public class ControladorLogin {
     EmpleadoArreglo modelo;
-    /*frmIngreso vista;
+    frmIngreso vista;
 
     public ControladorLogin(EmpleadoArreglo modelo, 
             frmIngreso vista) {
         this.modelo = modelo;
         this.vista = vista;
-        this.vista.btnSalir.addActionListener( new ActionListener() {
+        this.vista.btnSalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 System.exit(0);
@@ -26,15 +26,11 @@ public class ControladorLogin {
         this.vista.btnIngresar.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Empleado u = modelo.validar(vista.txtUsuairo.getText(), 
+                Empleado u = modelo.validar(vista.txtUsuario.getText(), 
                             vista.txtClave.getText() );
                 if (u != null){
                     //JOptionPane.showMessageDialog( vista, u );
-                    frmPrincipal vistaP = new frmPrincipal();
-                    ControladorPrincipal controladorPrincipal = 
-                            new ControladorPrincipal(u, vistaP);
-                    controladorPrincipal.iniciar();
-                    vista.dispose();
+                    JOptionPane.showMessageDialog(vista,u);
                     
                     
                 } else {
@@ -53,7 +49,6 @@ public class ControladorLogin {
     
     public void limpiarControles(){
         vista.txtClave.setText("");
-        vista.txtUsuairo.setText("");
-        
-    }*/
+        vista.txtUsuario.setText("");   
+    }
 }
