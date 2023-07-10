@@ -6,23 +6,26 @@ public class Empleado {
     private String apellido;
     private String usuario;
     private String clave;
-    private Login login;
 
     public Empleado(String nombre, String apellido, String usuario, String clave) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
-        this.login = new Login(usuario, clave);
     }
     
     public boolean validar(){
-        return this.login.validar(usuario, clave);
+        boolean resultado = false;
+        if(this.usuario.equalsIgnoreCase(usuario) &&
+                this.clave.equals(clave)){
+            resultado = true;
+        }
+        return resultado;
     }
 
     @Override
     public String toString() {
-        return "Empleado{" + "nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario + ", clave=" + clave + ", login=" + login + '}';
+        return "Empleado{" + "nombre=" + nombre + ", apellido=" + apellido + ", usuario=" + usuario + ", clave=" + clave + '}';
     }
 
     public String getNombre() {
@@ -41,8 +44,9 @@ public class Empleado {
         return clave;
     }
 
-    public Login getLogin() {
-        return login;
+    public void setClave(String clave) {
+        this.clave = clave;
     }
+    
      
 }
