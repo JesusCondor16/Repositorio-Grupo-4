@@ -7,6 +7,8 @@ import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.EmpleadoArreglo;
 import vista.frmLogin;
+import vista.frmRegular;
+import vista.frmRRHH;
 
 public class ControladorLogin {
     EmpleadoArreglo modelo;
@@ -27,11 +29,19 @@ public class ControladorLogin {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Empleado u = modelo.validar(vista.txtUsuario.getText(), 
-                            vista.txtClave.getText() );
+                            vista.txtClave.getText() , vista.txtTipo.getItemAt(0));
                 if (u != null){
-                    //JOptionPane.showMessageDialog( vista, u );
-                    JOptionPane.showMessageDialog(vista,u);
-                    
+                    if(vista.txtTipo.getItemAt(0) == "Empleado Regular"){
+                        frmRegular vistaR = new frmRegular();
+                        ControladorRegular controladorRegular = new ControladorRegular(u, vistaR);
+                        controladorRegular.iniciar();
+                        vista.dispose();
+                    } else {
+                        frmRRHH vistaH = new frmRRHH();
+                        ControladorRRHH controladorRRHH = new ControladorRRHH(u, vistaH);
+                        controladorRRHH.iniciar();
+                        vista.dispose();
+                    }
                     
                 } else {
                     JOptionPane.showMessageDialog( vista, "Credenciales invalidas" );

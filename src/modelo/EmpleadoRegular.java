@@ -4,8 +4,8 @@ package modelo;
 public class EmpleadoRegular extends Empleado {
     private String departamento;
 
-    public EmpleadoRegular(String nombre, String dni, String usuario, String clave, String departamento) {
-        super(nombre, dni, usuario, clave);
+    public EmpleadoRegular(String nombre, String dni, String usuario, String clave, String tipoEmpleado, String departamento) {
+        super(nombre, dni, usuario, clave, tipoEmpleado);
         this.departamento = departamento;
     }
 

@@ -5,24 +5,25 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.Empleado;
 import modelo.EmpleadoArreglo;
-/*import vista.frmIngreso;*/
+import vista.frmRegular;
+import vista.frmLogin;
 
-public class ControladorPrincipal {
+public class ControladorRegular {
     Empleado modelo;
-    /*frmPrincipal vista;
+    frmRegular vista;
 
-    public ControladorPrincipal(Empleado modelo, frmPrincipal vista) {
+    public ControladorRegular(Empleado modelo, frmRegular vista) {
         this.modelo = modelo;
         this.vista = vista;
-        vista.lblUsuario.setText("Empleado:"+ modelo.getNombre());
         
-        this.vista.btnSalir.addActionListener(new ActionListener() {
+        vista.lblsubtitulo.setText("Empleado:"+ modelo.getNombre());
+        this.vista.btnsalir.addActionListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmIngreso fIngreso = new frmIngreso();
+                frmLogin flogin = new frmLogin();
                 ControladorLogin controlador = 
-                        new ControladorLogin(configuracion.Datos.usuarios, fIngreso);
+                        new ControladorLogin(configuracion.Datos.usuarios, flogin);
                 controlador.iniciar();
                 
                 vista.dispose();
@@ -33,5 +34,5 @@ public class ControladorPrincipal {
     public void iniciar(){
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
-    }*/
+    }
 }

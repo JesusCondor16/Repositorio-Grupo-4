@@ -6,15 +6,17 @@ public class Empleado {
     private String apellido;
     private String usuario;
     private String clave;
+    private String tipoEmpleado;
 
-    public Empleado(String nombre, String apellido, String usuario, String clave) {
+    public Empleado(String nombre, String apellido, String usuario, String clave, String tipoEmpleado) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.usuario = usuario;
         this.clave = clave;
+        this.tipoEmpleado = tipoEmpleado;
     }
     
-    public boolean ingresarSistema(String usuario, String clave){
+    public boolean ingresarSistema(String usuario, String clave, String tipoEmpleado){
         boolean resultado = false;
         if(this.usuario.equalsIgnoreCase(usuario) &&
                 this.clave.equals(clave)){
