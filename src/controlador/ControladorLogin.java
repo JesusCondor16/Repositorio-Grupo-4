@@ -18,25 +18,20 @@ public class ControladorLogin {
             frmLogin vista) {
         this.modelo = modelo;
         this.vista = vista;
-        this.vista.btnSalir.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                System.exit(0);
-            }
-        });
         
         this.vista.btnIngresar.addActionListener( new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Empleado u = modelo.validar(vista.txtUsuario.getText(), 
                             vista.txtClave.getText() , vista.txtTipo.getItemAt(0));
+                String opcionSeleccionada = (String) vista.txtTipo.getSelectedItem();
                 if (u != null){
-                    if(vista.txtTipo.getItemAt(0) == "Empleado Regular"){
+                    if("Empleado Regular".equals(opcionSeleccionada)){
                         frmRegular vistaR = new frmRegular();
                         ControladorRegular controladorRegular = new ControladorRegular(u, vistaR);
                         controladorRegular.iniciar();
                         vista.dispose();
-                    } else {
+                    } else if("Empleado RRHH".equals(opcionSeleccionada)) {
                         frmRRHH vistaH = new frmRRHH();
                         ControladorRRHH controladorRRHH = new ControladorRRHH(u, vistaH);
                         controladorRRHH.iniciar();

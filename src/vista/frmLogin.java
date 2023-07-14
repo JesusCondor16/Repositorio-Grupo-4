@@ -12,8 +12,7 @@ public class frmLogin extends javax.swing.JFrame {
     private void initComponents() {
 
         panTitulo = new javax.swing.JPanel();
-        lblTitulo = new javax.swing.JLabel();
-        btnSalir = new javax.swing.JButton();
+        Titulo = new javax.swing.JLabel();
         panControles = new javax.swing.JPanel();
         lblUsuario = new javax.swing.JLabel();
         lblClave = new javax.swing.JLabel();
@@ -28,35 +27,23 @@ public class frmLogin extends javax.swing.JFrame {
 
         panTitulo.setBorder(javax.swing.BorderFactory.createEmptyBorder(1, 1, 1, 1));
 
-        lblTitulo.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
-        lblTitulo.setForeground(new java.awt.Color(243, 242, 242));
-        lblTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblTitulo.setText("SISTEMA DE CONTROL DE LICENCIAS");
-
-        btnSalir.setBackground(new java.awt.Color(60, 63, 65));
-        btnSalir.setText("X");
-        btnSalir.setBorder(null);
+        Titulo.setText("SISTEMA DE CONTROL DE LICENCIAS");
 
         javax.swing.GroupLayout panTituloLayout = new javax.swing.GroupLayout(panTitulo);
         panTitulo.setLayout(panTituloLayout);
         panTituloLayout.setHorizontalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panTituloLayout.createSequentialGroup()
-                .addGap(78, 78, 78)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
-                .addComponent(btnSalir, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTituloLayout.createSequentialGroup()
+                .addContainerGap(123, Short.MAX_VALUE)
+                .addComponent(Titulo)
+                .addGap(95, 95, 95))
         );
         panTituloLayout.setVerticalGroup(
             panTituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTituloLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btnSalir)
-                .addGap(25, 25, 25))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panTituloLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(lblTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(Titulo)
+                .addGap(21, 21, 21))
         );
 
         getContentPane().add(panTitulo, java.awt.BorderLayout.NORTH);
@@ -121,7 +108,7 @@ public class frmLogin extends javax.swing.JFrame {
                 .addGroup(panControlesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblTipo)
                     .addComponent(txtTipo, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         getContentPane().add(panControles, java.awt.BorderLayout.CENTER);
@@ -192,11 +179,10 @@ public class frmLogin extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel Titulo;
     public javax.swing.JButton btnIngresar;
-    public javax.swing.JButton btnSalir;
     private javax.swing.JLabel lblClave;
     public javax.swing.JLabel lblTipo;
-    private javax.swing.JLabel lblTitulo;
     private javax.swing.JLabel lblUsuario;
     private javax.swing.JPanel panBoton;
     private javax.swing.JPanel panControles;
