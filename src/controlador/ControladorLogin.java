@@ -6,14 +6,14 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import modelo.Empleado;
 import modelo.EmpleadoArreglo;
-import vista.frmIngreso;
+import vista.frmLogin;
 
 public class ControladorLogin {
     EmpleadoArreglo modelo;
-    frmIngreso vista;
+    frmLogin vista;
 
     public ControladorLogin(EmpleadoArreglo modelo, 
-            frmIngreso vista) {
+            frmLogin vista) {
         this.modelo = modelo;
         this.vista = vista;
         this.vista.btnSalir.addActionListener(new ActionListener() {
