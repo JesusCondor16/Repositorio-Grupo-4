@@ -3,6 +3,8 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JLabel;
+import javax.swing.table.DefaultTableModel;
 import modelo.Empleado;
 import modelo.EmpleadoArreglo;
 import vista.frmRegular;
@@ -29,10 +31,25 @@ public class ControladorRegular {
                 vista.dispose();
             }
         });
+                
     }
      
     public void iniciar(){
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
     }
+    
+    public void iniciarComponentes(){
+        vista.btnEnviar.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String texto = "p";
+                vista.jTable1.setName("p");
+            }
+            
+        }
+    );
+    
+    }
+    
 }

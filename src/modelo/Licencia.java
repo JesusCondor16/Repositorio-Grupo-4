@@ -16,6 +16,10 @@ public class Licencia {
         this.fechaFin = fechaFin;
     }
 
+    public Licencia() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public void cambiarEstado(boolean estado) {
         this.estado = estado;
     }
@@ -49,7 +53,16 @@ public class Licencia {
     public Date getFechaFin() {
         return fechaFin;
     }
-
+    
+    public Object[] toArray(){
+        Object[] obj = new Object[3];
+        
+        obj[0] = estado;
+        obj[1] = fechaInicio;
+        obj[2] = fechaFin;
+        
+        return obj;
+    }
     // Otros métodos y lógica adicional según sea necesario
 }
 
