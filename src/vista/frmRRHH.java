@@ -16,25 +16,27 @@ public class frmRRHH extends javax.swing.JFrame {
 //        this.empleadoRegular = empleadoRegular;
     }
 
- /*   public void actualizarTablaSolicitudes() {
+    public void actualizarTablaSolicitudes() {
         DefaultTableModel modelo = (DefaultTableModel) tblSolicitudes.getModel();
         modelo.setRowCount(0); // Limpiar la tabla antes de actualizarla
 
-        List<Licencia> solicitudes = empleadoRegular.getSolicitudesLicenciaRRHH();
-        for (Licencia solicitud : solicitudes) {
-            Object[] fila = {
-                solicitud.getDepartamento(),
-                solicitud.getFechaInicio(),
-                solicitud.getFechaFin(),
-                solicitud.getEmpleado().getNombre(),
-                solicitud.getEstado(),
-                solicitud.getTipo(),
-                solicitud.getRazon()
-            };
-            modelo.addRow(fila);
+        List<String[]> solicitudes = empleadoRegular.getSolicitudesLicenciaRRHH();
+        Object[][] datos = new Object[solicitudes.size()][8];
+        for (int i = 0; i < solicitudes.size(); i++) {
+            String[] solicitud = solicitudes.get(i);
+            datos[i][0] = solicitud[0]; // Depa
+            datos[i][1] = solicitud[2]; // FechaInicio
+            datos[i][2] = solicitud[3]; // Fecha Final
+            datos[i][3] = solicitud[6]; // Nombre
+            datos[i][4] = solicitud[1]; // Estado
+            datos[i][5] = solicitud[5]; // tipo
+            datos[i][6] = solicitud[7]; // razon
         }
+        DefaultTableModel model = (DefaultTableModel) tblSolicitudes.getModel();
+        model.setDataVector(datos, new Object[]{"Departamento","Fecha Inicio" ,"Fecha Fin", "Empleado", "Estado","tipo","Razon"});
+        
     }
-*/
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {

@@ -2,6 +2,7 @@ package controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import modelo.EmpleadoRRHH;
@@ -19,57 +20,44 @@ public class ControladorRRHH {
         this.vista = vista;
 
         vista.lblsubtitulo.setText("Empleado: " + modelo.getNombre());
- /*       Licencia lice = (Licencia)librerias.SerializadoraGen.deserializar("licencia");
+        Licencia lice = (Licencia)librerias.SerializadoraGen.deserializar("licencia");
         
-        modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(), lice.getJustificacion(), lice.getTipo(),lice.getRazon());
-        actualizarTablaSolicitudes();*/
-        try {
-    List<Object> objetos = librerias.SerializadoraGen.deserializarTodos("licencia");
-    if (!objetos.isEmpty()) {
-        for(int i=0;i<objetos.size();i++){
-         Object primerObjeto = objetos.get(i);
-        if (primerObjeto instanceof Licencia) {
-            Licencia licencia = (Licencia) primerObjeto;
-            modelo.solicitarLicenciaRRHH(licencia.getDepartamento(), licencia.getFechaInicio(), licencia.getFechaFin(), licencia.getEmpleado(), licencia.getJustificacion(), licencia.getTipo(), licencia.getRazon());
-            
-        }
+        modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(), lice.getEstado(),lice.getJustificacion(), lice.getTipo(),lice.getRazon());
         actualizarTablaSolicitudes();
-        }
-        
-    }
-
-} catch (Exception e) {
-    e.printStackTrace();
-}
+      
 
         
         this.vista.tblSolicitudes.getSelectionModel().addListSelectionListener(e -> {
             int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
-  /*          if (filaSeleccionada != -1) {
-                Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
+            if (filaSeleccionada != -1) {
+                String[] solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
                 mostrarDatosSolicitud(solicitud);
-            }*/
+            }
         });
 
         this.vista.btnAprobar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
- /*               int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
+                int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                    Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
-                    aprobarSolicitud(solicitud);
-                }*/
+                    lice.setEstado("Aprobado");
+                    lice.setRazon(vista.txtRazon.getText());
+                    modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
+                    actualizarTablaSolicitudes();
+                }
             }
         });
 
         this.vista.btnRechazar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-       /*         int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
+                int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                    Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
-                    rechazarSolicitud(solicitud);
-                }*/
+                    lice.setEstado("Rechazado");
+                    lice.setRazon(vista.txtRazon.getText());
+                    modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
+                    actualizarTablaSolicitudes();
+                }
             }
         });
 
@@ -91,29 +79,33 @@ public class ControladorRRHH {
         actualizarTablaSolicitudes(); // Agregado para actualizar la tabla al iniciar el formulario
     }
     
- /*   private void mostrarDatosSolicitud(Licencia solicitud) {
-        vista.lblJustif.setText(solicitud.getJustificacion());
-    }*/
+    private void mostrarDatosSolicitud(String[] solicitud) {
+            vista.lblJustif.setText(solicitud[4]);
+    vista.txtRazon.setText(solicitud[7]);
+    vista.txtRazon.setEnabled(true);
+    vista.btnAprobar.setEnabled(true);
+    vista.btnRechazar.setEnabled(true);
+    }
     
- /*   private void aprobarSolicitud(Licencia solicitud) {
+    private void aprobarSolicitud(String[] solicitud) {
         String razon = vista.txtRazon.getText();
         
-        solicitud.setEstado("Aprobada");
-        solicitud.setRazon(razon);
+        solicitud[1]=("Aprobada");
+        solicitud[7]=razon;
         
         modelo.actualizarSolicitud(solicitud);
         vista.actualizarTablaSolicitudes();
-    }*/
+    }
     
- /*   private void rechazarSolicitud(Licencia solicitud) {
+    private void rechazarSolicitud(String[] solicitud) {
         String razon = vista.txtRazon.getText();
         
-        solicitud.setEstado("Rechazada");
-        solicitud.setRazon(razon);
+        solicitud[1]=("Rechazada");
+        solicitud[7]=(razon);
         
         modelo.actualizarSolicitud(solicitud);
         vista.actualizarTablaSolicitudes();
-    }*/
+    }
     
     public void actualizarTablaSolicitudes() {
         //depa,"Pendiente",fechaInicioString,fechaFinalString,motivo,tipo,modelo.getNombre(),"--"
@@ -132,5 +124,6 @@ public class ControladorRRHH {
         }
         DefaultTableModel model = (DefaultTableModel) vista.tblSolicitudes.getModel();
         model.setDataVector(datos, new Object[]{"Departamento","Fecha Inicio" ,"Fecha Fin", "Empleado", "Estado","tipo","Razon"});
+        
     }
 }

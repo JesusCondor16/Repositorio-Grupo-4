@@ -39,20 +39,20 @@ public class EmpleadoRegular extends Empleado implements Serializable{
     public List<String[]> getSolicitudesLicenciaRRHH() {
         return solicitudesLicenciaRRHH;
     }
-    public void solicitarLicenciaRRHH(String depa, Date fechaInicio,Date fechaFin,EmpleadoRegular modelo,String motivo, String tipo,String razon) {
-        Licencia solicitud = new Licencia(depa, fechaInicio, fechaFin, modelo, "Pendiente", motivo, tipo, "--");
+    public void solicitarLicenciaRRHH(String depa, Date fechaInicio,Date fechaFin,EmpleadoRegular modelo,String estado,String motivo, String tipo,String razon) {
+        Licencia solicitud = new Licencia(depa, fechaInicio, fechaFin, modelo, estado, motivo, tipo, razon);
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaInicioString = dateFormat.format(solicitud.getFechaInicio());
         String fechaFinalString = dateFormat.format(solicitud.getFechaFin());
- 
-        solicitudesLicenciaRRHH.add(new String[]{depa,"Pendiente",fechaInicioString,fechaFinalString,motivo,tipo,modelo.getNombre(),"--"});
+        
+        solicitudesLicenciaRRHH.add(new String[]{depa,estado,fechaInicioString,fechaFinalString,motivo,tipo,modelo.getNombre(),razon});
     }
- /*   public void actualizarSolicitud(Licencia licencia) {
+    public void actualizarSolicitud(String[] licencia) {
         // Aquí debes implementar la lógica para actualizar la solicitud de licencia en tu modelo de datos
         // Por ejemplo, buscar la solicitud en la lista y reemplazarla con la licencia modificada
         int index = solicitudesLicenciaRRHH.indexOf(licencia);
         if (index != -1) {
            solicitudesLicenciaRRHH.set(index, licencia);
         }
-    }*/
+    }
 }
