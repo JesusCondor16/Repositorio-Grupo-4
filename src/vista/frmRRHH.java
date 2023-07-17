@@ -20,7 +20,7 @@ public class frmRRHH extends javax.swing.JFrame {
         DefaultTableModel modelo = (DefaultTableModel) tblSolicitudes.getModel();
         modelo.setRowCount(0); // Limpiar la tabla antes de actualizarla
 
-        List<Licencia> solicitudes = empleadoRegular.getSolicitudesLicencia();
+        List<Licencia> solicitudes = empleadoRegular.getSolicitudesLicenciaRRHH();
         for (Licencia solicitud : solicitudes) {
             Object[] fila = {
                 solicitud.getDepartamento(),
@@ -207,7 +207,7 @@ public class frmRRHH extends javax.swing.JFrame {
         int filaSeleccionada = tblSolicitudes.getSelectedRow();
 
         if (filaSeleccionada != -1) {
-            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+            Licencia solicitud = empleadoRegular.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
 
             solicitud.setRazon(razon);
             actualizarTablaSolicitudes();
@@ -229,7 +229,7 @@ public class frmRRHH extends javax.swing.JFrame {
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
         int filaSeleccionada = tblSolicitudes.getSelectedRow();
         if (filaSeleccionada != -1) {
-            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+            Licencia solicitud = empleadoRegular.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
             aprobarSolicitud(solicitud);
         }
     }//GEN-LAST:event_btnAprobarActionPerformed
@@ -237,7 +237,7 @@ public class frmRRHH extends javax.swing.JFrame {
     private void btnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazarActionPerformed
         int filaSeleccionada = tblSolicitudes.getSelectedRow();
         if (filaSeleccionada != -1) {
-            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+            Licencia solicitud = empleadoRegular.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
             rechazarSolicitud(solicitud);
         }
     }//GEN-LAST:event_btnRechazarActionPerformed

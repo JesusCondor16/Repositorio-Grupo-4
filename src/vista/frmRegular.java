@@ -4,6 +4,7 @@ package vista;
 import controlador.ControladorLogin;
 import controlador.ControladorRRHH;
 import controlador.ControladorRegular;
+import java.util.Date;
 import javax.swing.JOptionPane;
 import modelo.Licencia;
 import modelo.Empleado;
@@ -18,8 +19,8 @@ public class frmRegular extends javax.swing.JFrame {
 
     public frmRegular(EmpleadoRegular modelo) {
         initComponents();
-        this.modelo = modelo;
-        this.controladorRegular = new ControladorRegular(modelo, this);
+ //       this.modelo = modelo;
+ //       this.controladorRegular = new ControladorRegular(modelo, this);
     }
 
     @SuppressWarnings("unchecked")
@@ -235,14 +236,16 @@ public class frmRegular extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTipoLActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        String motivo = txtJust.getText();
+   /*     String motivo = txtJust.getText();
         String tipo = txtTipoL.getSelectedItem().toString();
+        Date fechaInicio = datFinicio.getDate();
+        Date fechaFin = datFfin.getDate();
 
         if (motivo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, ingresa un motivo de licencia.", "Error", JOptionPane.ERROR_MESSAGE);
         } else {
-            controladorRegular.enviarSolicitudLicencia(motivo, tipo);
-        }
+            controladorRegular.enviarSolicitudLicencia(fechaInicio,fechaFin,modelo,motivo, tipo);
+        }*/
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
@@ -253,7 +256,7 @@ public class frmRegular extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
-    public static void main(String args[]) {
+  /*  public static void main(String args[]) {
  
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -261,7 +264,7 @@ public class frmRegular extends javax.swing.JFrame {
             }
         });
     }
-
+*/
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEnviar;
     public javax.swing.JButton btnsalir;

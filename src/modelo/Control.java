@@ -1,5 +1,5 @@
 
-package modelo;
+/*package modelo;
 
 public class Control {
     private Licencia[] licencias;
@@ -32,4 +32,4 @@ public class Control {
         }
     }
 }
-
+*/

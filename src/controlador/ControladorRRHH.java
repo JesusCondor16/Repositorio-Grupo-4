@@ -21,7 +21,7 @@ public class ControladorRRHH {
         this.vista.tblSolicitudes.getSelectionModel().addListSelectionListener(e -> {
             int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
             if (filaSeleccionada != -1) {
-                Licencia solicitud = modelo.getSolicitudesLicencia().get(filaSeleccionada);
+                Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
                 mostrarDatosSolicitud(solicitud);
             }
         });
@@ -31,7 +31,7 @@ public class ControladorRRHH {
             public void actionPerformed(ActionEvent e) {
                 int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                    Licencia solicitud = modelo.getSolicitudesLicencia().get(filaSeleccionada);
+                    Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
                     aprobarSolicitud(solicitud);
                 }
             }
@@ -42,7 +42,7 @@ public class ControladorRRHH {
             public void actionPerformed(ActionEvent e) {
                 int filaSeleccionada = vista.tblSolicitudes.getSelectedRow();
                 if (filaSeleccionada != -1) {
-                    Licencia solicitud = modelo.getSolicitudesLicencia().get(filaSeleccionada);
+                    Licencia solicitud = modelo.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
                     rechazarSolicitud(solicitud);
                 }
             }
@@ -93,7 +93,7 @@ public class ControladorRRHH {
     public void actualizarTablaSolicitudes() {
         DefaultTableModel model = (DefaultTableModel) vista.tblSolicitudes.getModel();
         
-        for (Licencia solicitud : modelo.getSolicitudesLicencia()) {
+        for (Licencia solicitud : modelo.getSolicitudesLicenciaRRHH()) {
             Object[] fila = {
                 solicitud.getDepartamento(),
                 solicitud.getFechaInicio(),

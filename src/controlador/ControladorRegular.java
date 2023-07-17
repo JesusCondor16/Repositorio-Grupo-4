@@ -39,12 +39,15 @@ public class ControladorRegular {
             public void actionPerformed(ActionEvent e) {
                 String motivo = vista.txtJust.getText();
                 String tipo = vista.txtTipoL.getSelectedItem().toString();
+                Date fechaInicio = vista.datFinicio.getDate();
+                Date fechaFin = vista.datFfin.getDate();
                 
                 if (motivo.isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Por favor, ingresa un motivo de licencia.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
-                    modelo.solicitarLicencia(motivo, tipo);
+                    modelo.solicitarLicencia(fechaInicio,fechaFin,modelo,motivo, tipo);
                     actualizarTablaSolicitudes();
+                    
                 }
             }
         });
@@ -53,26 +56,43 @@ public class ControladorRegular {
     public void iniciar() {
         this.vista.setLocationRelativeTo(null);
         this.vista.setVisible(true);
-        actualizarTablaSolicitudes(); // Agregado para actualizar la tabla al iniciar el formulario
+ //       actualizarTablaSolicitudes(); // Agregado para actualizar la tabla al iniciar el formulario
     }
 
-    private void actualizarTablaSolicitudes() {
-        List<Licencia> solicitudes = modelo.getSolicitudesLicencia();
-        DefaultTableModel model = (DefaultTableModel) vista.tblRegistroU.getModel();
+    public void actualizarTablaSolicitudes() {
+        List<String[]> solicitudes = modelo.getSolicitudesLicencia();
+        
 
-        for (Licencia solicitud : solicitudes) {
-            Object[] fila = {
-                solicitud.getTipo(),
-                solicitud.getFechaInicio(),
-                solicitud.getFechaFin(),
-                solicitud.getEstado(),
-                solicitud.getRazon()
-            };
-            model.addRow(fila);
+        /*
+        Object[][] datos = new Object[solicitudes.size()][5];
+        for (int i = 0; i < solicitudes.size(); i++) {
+            String[] solicitud = solicitudes.get(i);
+            datos[i][0] = solicitud[0]; // Motivo
+            datos[i][1] = solicitud[1]; // Tipo
+            datos[i][2] = solicitud[2]; // Fecha inicio
+            datos[i][3] = solicitud[3]; // Fecha fin
+            datos[i][4] = solicitud[5]; // Estado
+
         }
+        */
+        //departamento,"Pendiente",fechaInicioString,fechaFinalString,motivo,tipo
+        Object[][] datos = new Object[solicitudes.size()][5];
+
+        for (int i = 0; i < solicitudes.size(); i++) {
+            String[] solicitud = solicitudes.get(i);
+            datos[i][0] = solicitud[4]; // Motivo
+            datos[i][1] = solicitud[5]; // Tipo
+            datos[i][2] = solicitud[2]; // Fecha inicio
+            datos[i][3] = solicitud[3]; // Fecha fin
+            datos[i][4] = solicitud[1]; // Estado
+
+    //        model.addRow(fila);
+        }
+        DefaultTableModel model = (DefaultTableModel) vista.tblRegistroU.getModel();
+        model.setDataVector(datos, new Object[]{"Motivo","Tipo" ,"Fecha inicio", "Fecha fin", "Estado"});
     }
     
-    public void enviarSolicitudLicencia(String motivo, String tipo) {
-        modelo.solicitarLicencia(motivo, tipo);
-    }
+   /* public void enviarSolicitudLicencia(Date fechaInicio,Date fechaFin,EmpleadoRegular modelo,String motivo, String tipo) {
+        modelo.solicitarLicencia(fechaInicio,fechaFin,modelo,motivo, tipo);
+    }*/
 }

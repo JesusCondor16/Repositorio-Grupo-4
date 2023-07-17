@@ -35,13 +35,13 @@ public class ControladorLogin {
 
                     if (empleado != null) {
                         if (tipoEmpleado.equals("Empleado Regular") && empleado instanceof EmpleadoRegular) {
-                            frmRegular vistaR = new frmRegular();
+                            frmRegular vistaR = new frmRegular((EmpleadoRegular) empleado);
                             ControladorRegular controladorRegular = new ControladorRegular((EmpleadoRegular) empleado, vistaR);
                             controladorRegular.iniciar();
                             vista.dispose();
-                        } else if (tipoEmpleado.equals("Empleado RRHH") && empleado instanceof EmpleadoRRHH) {
-                            frmRRHH vistaH = new frmRRHH();
-                            ControladorRRHH controladorRRHH = new ControladorRRHH((EmpleadoRRHH) empleado, vistaH);
+                        } else if (tipoEmpleado.equals("Empleado RRHH") && empleado instanceof EmpleadoRegular) {
+                            frmRRHH vistaH = new frmRRHH((EmpleadoRegular) empleado);
+                            ControladorRRHH controladorRRHH = new ControladorRRHH((EmpleadoRegular) empleado, vistaH);
                             controladorRRHH.iniciar();
                             vista.dispose();
                         } else {
