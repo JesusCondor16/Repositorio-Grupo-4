@@ -11,12 +11,12 @@ public class frmRRHH extends javax.swing.JFrame {
 
     private EmpleadoRegular empleadoRegular;
 
-    public frmRRHH(EmpleadoRegular empleadoRegular) {
+    public frmRRHH() {
         initComponents();
-        this.empleadoRegular = empleadoRegular;
+//        this.empleadoRegular = empleadoRegular;
     }
 
-    public void actualizarTablaSolicitudes() {
+ /*   public void actualizarTablaSolicitudes() {
         DefaultTableModel modelo = (DefaultTableModel) tblSolicitudes.getModel();
         modelo.setRowCount(0); // Limpiar la tabla antes de actualizarla
 
@@ -34,7 +34,7 @@ public class frmRRHH extends javax.swing.JFrame {
             modelo.addRow(fila);
         }
     }
-
+*/
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -195,15 +195,15 @@ public class frmRRHH extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        frmLogin flogin = new frmLogin();
+ /*       frmLogin flogin = new frmLogin();
         ControladorLogin controlador = new ControladorLogin(configuracion.Datos.usuarios, flogin);
         controlador.iniciar();
 
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void txtRazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonActionPerformed
-       String razon = txtRazon.getText();
+  /*     String razon = txtRazon.getText();
         int filaSeleccionada = tblSolicitudes.getSelectedRow();
 
         if (filaSeleccionada != -1) {
@@ -211,11 +211,11 @@ public class frmRRHH extends javax.swing.JFrame {
 
             solicitud.setRazon(razon);
             actualizarTablaSolicitudes();
-    }
+    }*/
     }//GEN-LAST:event_txtRazonActionPerformed
 
     private void aprobarSolicitud(Licencia solicitud) {
-        String justificacion = lblJustif.getText();
+/*        String justificacion = lblJustif.getText();
         String razon = txtRazon.getText();
 
         solicitud.setEstado("Aprobada");
@@ -223,27 +223,27 @@ public class frmRRHH extends javax.swing.JFrame {
         solicitud.setRazon(razon);
 
         empleadoRegular.actualizarSolicitud(solicitud);
-        actualizarTablaSolicitudes();
+        actualizarTablaSolicitudes();*/
     }
     
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
-        int filaSeleccionada = tblSolicitudes.getSelectedRow();
+/*        int filaSeleccionada = tblSolicitudes.getSelectedRow();
         if (filaSeleccionada != -1) {
             Licencia solicitud = empleadoRegular.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
             aprobarSolicitud(solicitud);
-        }
+        }*/
     }//GEN-LAST:event_btnAprobarActionPerformed
 
     private void btnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazarActionPerformed
-        int filaSeleccionada = tblSolicitudes.getSelectedRow();
+ /*       int filaSeleccionada = tblSolicitudes.getSelectedRow();
         if (filaSeleccionada != -1) {
             Licencia solicitud = empleadoRegular.getSolicitudesLicenciaRRHH().get(filaSeleccionada);
             rechazarSolicitud(solicitud);
-        }
+        }*/
     }//GEN-LAST:event_btnRechazarActionPerformed
     
     private void rechazarSolicitud(Licencia solicitud) {
-        String justificacion = lblJustif.getText();
+/*       String justificacion = lblJustif.getText();
         String razon = txtRazon.getText();
 
         solicitud.setEstado("Rechazada");
@@ -251,17 +251,17 @@ public class frmRRHH extends javax.swing.JFrame {
         solicitud.setRazon(razon);
 
         empleadoRegular.actualizarSolicitud(solicitud);
-        actualizarTablaSolicitudes();
+        actualizarTablaSolicitudes();*/
     }
 
     
-    public static void main(String args[]) {
-        java.awt.EventQueue.invokeLater(new Runnable() {
+   /* public static void main(String args[]) {
+ /*       java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new frmRRHH(null).setVisible(true);
             }
         });
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnAprobar;

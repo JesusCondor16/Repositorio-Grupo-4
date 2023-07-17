@@ -40,7 +40,7 @@ public class ControladorLogin {
                             controladorRegular.iniciar();
                             vista.dispose();
                         } else if (tipoEmpleado.equals("Empleado RRHH") && empleado instanceof EmpleadoRegular) {
-                            frmRRHH vistaH = new frmRRHH((EmpleadoRegular) empleado);
+                            frmRRHH vistaH = new frmRRHH();
                             ControladorRRHH controladorRRHH = new ControladorRRHH((EmpleadoRegular) empleado, vistaH);
                             controladorRRHH.iniciar();
                             vista.dispose();

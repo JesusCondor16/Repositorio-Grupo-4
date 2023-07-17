@@ -1,7 +1,9 @@
 
 package modelo;
 
-public class EmpleadoArreglo {
+import java.io.Serializable;
+
+public class EmpleadoArreglo implements Serializable {
     private Empleado[] empleados;
     private int indice;
 

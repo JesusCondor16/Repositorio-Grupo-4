@@ -1,7 +1,9 @@
 
 package modelo;
 
-public class EmpleadoRRHH extends Empleado {
+import java.io.Serializable;
+
+public class EmpleadoRRHH extends Empleado implements Serializable {
 
 
     public EmpleadoRRHH(String nombre, String dni, String usuario, String clave, String tipoEmpleado) {

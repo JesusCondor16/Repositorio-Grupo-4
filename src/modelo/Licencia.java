@@ -1,8 +1,9 @@
 package modelo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Licencia {
+public class Licencia implements Serializable{
     private String departamento;
     private Date fechaInicio;
     private Date fechaFin;
@@ -12,7 +13,7 @@ public class Licencia {
     private String razon;
     private String tipo;
 
-    public Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion, String tipo) {
+    public Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion, String tipo,String razon) {
         this.departamento = departamento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
@@ -20,6 +21,7 @@ public class Licencia {
         this.estado = estado;
         this.justificacion = justificacion;
         this.tipo = tipo;
+        this.razon = razon;
     }
 
     public String getDepartamento() {

@@ -11,8 +11,8 @@ public class App {
 
         frmLogin fIngreso = new frmLogin();
         configuracion.Datos.usuarios.agregar(new EmpleadoRegular("Juan Perez", "0000001", "jperez", "abc123", "Empleado Regular","seguridad"));
-        configuracion.Datos.usuarios.agregar(new Empleado("Jose Diaz", "0000002", "jdiaz", "abc123", "Empleado Regular"));
-        configuracion.Datos.usuarios.agregar(new Empleado("Carlos Ramos", "0000003", "cramos", "abc123", "Empleado RRHH"));
+        configuracion.Datos.usuarios.agregar(new EmpleadoRegular("Jose Diaz", "0000002", "jdiaz", "abc123", "Empleado Regular","contabilidad"));
+        configuracion.Datos.usuarios.agregar(new EmpleadoRegular("Carlos Ramos", "0000003", "cramos", "abc123", "Empleado RRHH","RRHH"));
     /*    try {
             librerias.SerializadoraGen.serializar("trabajadores", configuracion.Datos.usuarios);
         } catch (Exception e) {

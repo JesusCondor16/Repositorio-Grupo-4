@@ -45,6 +45,7 @@ public class ControladorRegular {
                 if (motivo.isEmpty()) {
                     JOptionPane.showMessageDialog(vista, "Por favor, ingresa un motivo de licencia.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
+                    librerias.SerializadoraGen.serializar("licencia",new Licencia(modelo.getDepartamento(), fechaInicio, fechaFin, modelo, "Pendiente", motivo, tipo,"--"));
                     modelo.solicitarLicencia(fechaInicio,fechaFin,modelo,motivo, tipo);
                     actualizarTablaSolicitudes();
                     
@@ -61,23 +62,7 @@ public class ControladorRegular {
 
     public void actualizarTablaSolicitudes() {
         List<String[]> solicitudes = modelo.getSolicitudesLicencia();
-        
-
-        /*
-        Object[][] datos = new Object[solicitudes.size()][5];
-        for (int i = 0; i < solicitudes.size(); i++) {
-            String[] solicitud = solicitudes.get(i);
-            datos[i][0] = solicitud[0]; // Motivo
-            datos[i][1] = solicitud[1]; // Tipo
-            datos[i][2] = solicitud[2]; // Fecha inicio
-            datos[i][3] = solicitud[3]; // Fecha fin
-            datos[i][4] = solicitud[5]; // Estado
-
-        }
-        */
-        //departamento,"Pendiente",fechaInicioString,fechaFinalString,motivo,tipo
-        Object[][] datos = new Object[solicitudes.size()][5];
-
+        Object[][] datos = new Object[solicitudes.size()][6];
         for (int i = 0; i < solicitudes.size(); i++) {
             String[] solicitud = solicitudes.get(i);
             datos[i][0] = solicitud[4]; // Motivo
@@ -85,8 +70,6 @@ public class ControladorRegular {
             datos[i][2] = solicitud[2]; // Fecha inicio
             datos[i][3] = solicitud[3]; // Fecha fin
             datos[i][4] = solicitud[1]; // Estado
-
-    //        model.addRow(fila);
         }
         DefaultTableModel model = (DefaultTableModel) vista.tblRegistroU.getModel();
         model.setDataVector(datos, new Object[]{"Motivo","Tipo" ,"Fecha inicio", "Fecha fin", "Estado"});
