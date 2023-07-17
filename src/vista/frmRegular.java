@@ -1,14 +1,25 @@
 
 package vista;
 
+import controlador.ControladorLogin;
+import controlador.ControladorRRHH;
+import controlador.ControladorRegular;
+import javax.swing.JOptionPane;
 import modelo.Licencia;
 import modelo.Empleado;
 import modelo.EmpleadoRegular;
 
-public class frmRegular extends javax.swing.JFrame {
+import javax.swing.JOptionPane;
 
-    public frmRegular() {
+public class frmRegular extends javax.swing.JFrame {
+    
+    private final EmpleadoRegular modelo;
+    private final ControladorRegular controladorRegular;
+
+    public frmRegular(EmpleadoRegular modelo) {
         initComponents();
+        this.modelo = modelo;
+        this.controladorRegular = new ControladorRegular(modelo, this);
     }
 
     @SuppressWarnings("unchecked")
@@ -220,25 +231,26 @@ public class frmRegular extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTipoLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoLActionPerformed
-        // TODO add your handling code here:
+        String tipo = txtTipoL.getSelectedItem().toString();
     }//GEN-LAST:event_txtTipoLActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        String tipo = txtTipoL.getName();
-        String fechaInicio = datFinicio.getDateFormatString();
-        String fechaFin = datFfin.getDateFormatString();
-        
-      //  Licencia licencia = new Licencia("", datFinicio, datFfin, "", "Pendiente", txtJust);
+        String motivo = txtJust.getText();
+        String tipo = txtTipoL.getSelectedItem().toString();
 
-        tblRegistroU.addRowSelectionInterval(1, 3);
-
-        txtTipoL.getName();
-        datFinicio.getDateFormatString();
-        datFfin.getDateFormatString();     
+        if (motivo.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Por favor, ingresa un motivo de licencia.", "Error", JOptionPane.ERROR_MESSAGE);
+        } else {
+            controladorRegular.enviarSolicitudLicencia(motivo, tipo);
+        }
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        
+        frmLogin flogin = new frmLogin();
+        ControladorLogin controlador = new ControladorLogin(configuracion.Datos.usuarios, flogin);
+        controlador.iniciar();
+
+        this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
     public static void main(String args[]) {

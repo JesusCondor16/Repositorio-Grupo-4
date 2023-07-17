@@ -10,14 +10,16 @@ public class Licencia {
     private String estado;
     private String justificacion;
     private String razon;
+    private String tipo;
 
-    public Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion) {
+    public Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion, String tipo) {
         this.departamento = departamento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.empleado = empleado;
         this.estado = estado;
         this.justificacion = justificacion;
+        this.tipo = tipo;
     }
 
     public String getDepartamento() {
@@ -75,4 +77,13 @@ public class Licencia {
     public void setRazon(String razon) {
         this.razon = razon;
     }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
 }

@@ -22,32 +22,36 @@ public class ControladorLogin {
         this.vista.btnIngresar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Empleado u = modelo.validar(vista.txtUsuario.getText(), vista.txtClave.getText());
-                String opcionSeleccionada = (String) vista.txtTipo.getSelectedItem();
-                if (u != null) {
-                    if ("Empleado Regular".equals(opcionSeleccionada)) {
-                        if (u instanceof EmpleadoRegular) {
+                String usuario = vista.txtUsuario.getText();
+                String clave = vista.txtClave.getText();
+                String tipoEmpleado = (String) vista.txtTipo.getSelectedItem();
+
+                if (usuario.isEmpty() || clave.isEmpty()) {
+                    JOptionPane.showMessageDialog(vista, "Por favor, ingresa usuario y clave.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else if (tipoEmpleado == null) {
+                    JOptionPane.showMessageDialog(vista, "Por favor, selecciona un tipo de empleado.", "Error", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    Empleado empleado = modelo.validar(usuario, clave);
+
+                    if (empleado != null) {
+                        if (tipoEmpleado.equals("Empleado Regular") && empleado instanceof EmpleadoRegular) {
                             frmRegular vistaR = new frmRegular();
-                            ControladorRegular controladorRegular = new ControladorRegular((EmpleadoRegular) u, vistaR);
+                            ControladorRegular controladorRegular = new ControladorRegular((EmpleadoRegular) empleado, vistaR);
                             controladorRegular.iniciar();
                             vista.dispose();
-                        } else {
-                            JOptionPane.showMessageDialog(vista, "Tipo de empleado incorrecto");
-                        }
-                    } else if ("Empleado RRHH".equals(opcionSeleccionada)) {
-                        if (u instanceof EmpleadoRRHH) {
+                        } else if (tipoEmpleado.equals("Empleado RRHH") && empleado instanceof EmpleadoRRHH) {
                             frmRRHH vistaH = new frmRRHH();
-                            ControladorRRHH controladorRRHH = new ControladorRRHH((EmpleadoRRHH) u, vistaH);
+                            ControladorRRHH controladorRRHH = new ControladorRRHH((EmpleadoRRHH) empleado, vistaH);
                             controladorRRHH.iniciar();
                             vista.dispose();
                         } else {
-                            JOptionPane.showMessageDialog(vista, "Tipo de empleado incorrecto");
+                            JOptionPane.showMessageDialog(vista, "Tipo de empleado incorrecto", "Error", JOptionPane.ERROR_MESSAGE);
                         }
+                    } else {
+                        JOptionPane.showMessageDialog(vista, "Credenciales inválidas", "Error", JOptionPane.ERROR_MESSAGE);
                     }
-                } else {
-                    JOptionPane.showMessageDialog(vista, "Credenciales inválidas");
+                    limpiarControles();
                 }
-                limpiarControles();
             }
         });
     }

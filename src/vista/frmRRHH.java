@@ -1,10 +1,38 @@
 
 package vista;
 
+import controlador.ControladorLogin;
+import javax.swing.table.DefaultTableModel;
+import modelo.Licencia;
+import modelo.EmpleadoRegular;
+import java.util.List;
+
 public class frmRRHH extends javax.swing.JFrame {
 
-    public frmRRHH() {
+    private EmpleadoRegular empleadoRegular;
+
+    public frmRRHH(EmpleadoRegular empleadoRegular) {
         initComponents();
+        this.empleadoRegular = empleadoRegular;
+    }
+
+    public void actualizarTablaSolicitudes() {
+        DefaultTableModel modelo = (DefaultTableModel) tblSolicitudes.getModel();
+        modelo.setRowCount(0); // Limpiar la tabla antes de actualizarla
+
+        List<Licencia> solicitudes = empleadoRegular.getSolicitudesLicencia();
+        for (Licencia solicitud : solicitudes) {
+            Object[] fila = {
+                solicitud.getDepartamento(),
+                solicitud.getFechaInicio(),
+                solicitud.getFechaFin(),
+                solicitud.getEmpleado().getNombre(),
+                solicitud.getEstado(),
+                solicitud.getTipo(),
+                solicitud.getRazon()
+            };
+            modelo.addRow(fila);
+        }
     }
 
     @SuppressWarnings("unchecked")
@@ -101,6 +129,11 @@ public class frmRRHH extends javax.swing.JFrame {
         });
 
         btnRechazar.setText("Rechazar");
+        btnRechazar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRechazarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -108,23 +141,19 @@ public class frmRRHH extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(63, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblJustif)
                     .addComponent(jLabel1)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 768, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnAprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addGap(34, 34, 34)
-                                .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(96, 96, 96))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(btnAprobar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(76, 76, 76)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRechazar, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(324, 324, 324)))
+                                .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(36, 36, 36)
+                        .addComponent(btnRechazar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(62, 62, 62))
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,17 +163,17 @@ public class frmRRHH extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addGap(29, 29, 29)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblJustif)
                 .addGap(46, 46, 46)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
-                .addGap(44, 44, 44)
+                .addGap(78, 78, 78)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAprobar)
-                    .addComponent(btnRechazar))
-                .addGap(30, 30, 30))
+                    .addComponent(btnRechazar)
+                    .addComponent(btnAprobar))
+                .addGap(63, 63, 63))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -166,40 +195,70 @@ public class frmRRHH extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        // TODO add your handling code here:
+        frmLogin flogin = new frmLogin();
+        ControladorLogin controlador = new ControladorLogin(configuracion.Datos.usuarios, flogin);
+        controlador.iniciar();
+
+        this.dispose();
     }//GEN-LAST:event_btnsalirActionPerformed
 
     private void txtRazonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtRazonActionPerformed
-        // TODO add your handling code here:
+       String razon = txtRazon.getText();
+        int filaSeleccionada = tblSolicitudes.getSelectedRow();
+
+        if (filaSeleccionada != -1) {
+            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+
+            solicitud.setRazon(razon);
+            actualizarTablaSolicitudes();
+    }
     }//GEN-LAST:event_txtRazonActionPerformed
 
+    private void aprobarSolicitud(Licencia solicitud) {
+        String justificacion = lblJustif.getText();
+        String razon = txtRazon.getText();
+
+        solicitud.setEstado("Aprobada");
+        solicitud.setJustificacion(justificacion);
+        solicitud.setRazon(razon);
+
+        empleadoRegular.actualizarSolicitud(solicitud);
+        actualizarTablaSolicitudes();
+    }
+    
     private void btnAprobarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAprobarActionPerformed
-        // TODO add your handling code here:
+        int filaSeleccionada = tblSolicitudes.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+            aprobarSolicitud(solicitud);
+        }
     }//GEN-LAST:event_btnAprobarActionPerformed
 
-   
-    public static void main(String args[]) {
-
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmRRHH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmRRHH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmRRHH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmRRHH.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+    private void btnRechazarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRechazarActionPerformed
+        int filaSeleccionada = tblSolicitudes.getSelectedRow();
+        if (filaSeleccionada != -1) {
+            Licencia solicitud = empleadoRegular.getSolicitudesLicencia().get(filaSeleccionada);
+            rechazarSolicitud(solicitud);
         }
-   
+    }//GEN-LAST:event_btnRechazarActionPerformed
+    
+    private void rechazarSolicitud(Licencia solicitud) {
+        String justificacion = lblJustif.getText();
+        String razon = txtRazon.getText();
+
+        solicitud.setEstado("Rechazada");
+        solicitud.setJustificacion(justificacion);
+        solicitud.setRazon(razon);
+
+        empleadoRegular.actualizarSolicitud(solicitud);
+        actualizarTablaSolicitudes();
+    }
+
+    
+    public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new frmRRHH().setVisible(true);
+                new frmRRHH(null).setVisible(true);
             }
         });
     }

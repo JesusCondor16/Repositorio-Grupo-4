@@ -1,21 +1,21 @@
 
 package modelo;
 
-public class LicenciaTipoArreglo {
-    private LicenciaTipo[] licencias;
+public class LicenciaArreglo {
+    private Licencia[] licencias;
     private int tamano;
 
-    public LicenciaTipoArreglo(int tamano) {
-        this.licencias = new LicenciaTipo[tamano];
+    public LicenciaArreglo(int tamano) {
+        this.licencias = new Licencia[tamano];
         this.tamano = 0;
     }
 
-    public void agregar(LicenciaTipo licenciaTipo) {
+    public void agregar(Licencia licenciaTipo) {
         this.licencias[this.tamano] = licenciaTipo;
         this.tamano++;
     }
 
-    public void eliminar(LicenciaTipo licenciaTipo) {
+    public void eliminar(Licencia licenciaTipo) {
         for (int i = 0; i < this.tamano; i++) {
             if (this.licencias[i] == licenciaTipo) {
                 for (int j = i; j < this.tamano - 1; j++) {
@@ -34,7 +34,7 @@ public class LicenciaTipoArreglo {
         }
     }
 
-    public LicenciaTipo buscar(String tipo) {
+    public Licencia buscar(String tipo) {
         for (int i = 0; i < this.tamano; i++) {
             if (this.licencias[i].getTipo().equalsIgnoreCase(tipo)) {
                 return this.licencias[i];
