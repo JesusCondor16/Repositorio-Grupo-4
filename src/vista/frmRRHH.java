@@ -65,13 +65,13 @@ public class frmRRHH extends javax.swing.JFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Departamento", "Fecha de inicio", "Fecha de fin", "Empleado", "Estado", "Razón"
+                "Departamento", "Fecha de inicio", "Fecha de fin", "Empleado", "Estado", "Tipo", "Razón"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -154,7 +154,7 @@ public class frmRRHH extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JLabel lblsubtitulo;
     private javax.swing.JLabel lbltitulo;
     // End of variables declaration//GEN-END:variables

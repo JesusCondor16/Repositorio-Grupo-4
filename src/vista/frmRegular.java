@@ -24,15 +24,15 @@ public class frmRegular extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        txtTipoL = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        txtJust = new javax.swing.JTextArea();
         btnEnviar = new javax.swing.JButton();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        datFinicio = new com.toedter.calendar.JDateChooser();
+        datFfin = new com.toedter.calendar.JDateChooser();
         panRegistro = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblRegistroU = new javax.swing.JTable();
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,16 +88,16 @@ public class frmRegular extends javax.swing.JFrame {
 
         jLabel4.setText("Justificación de licencia:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faltas", "Permisos", "Vacaciones" }));
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        txtTipoL.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Faltas", "Permisos", "Vacaciones" }));
+        txtTipoL.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                txtTipoLActionPerformed(evt);
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        txtJust.setColumns(20);
+        txtJust.setRows(5);
+        jScrollPane1.setViewportView(txtJust);
 
         btnEnviar.setText("Enviar solictud");
         btnEnviar.addActionListener(new java.awt.event.ActionListener() {
@@ -121,9 +121,9 @@ public class frmRegular extends javax.swing.JFrame {
                             .addComponent(jLabel3))
                         .addGap(85, 85, 85)
                         .addGroup(panSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtTipoL, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(datFfin, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                            .addComponent(datFinicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(panSolicitudLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(97, 97, 97)
@@ -142,7 +142,7 @@ public class frmRegular extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(panSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datFinicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(panSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panSolicitudLayout.createSequentialGroup()
@@ -150,18 +150,18 @@ public class frmRegular extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtTipoL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panSolicitudLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(28, 28, 28)
                         .addComponent(btnEnviar))
-                    .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(datFfin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(30, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblRegistroU.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -172,7 +172,7 @@ public class frmRegular extends javax.swing.JFrame {
                 "Tipo", "Fecha inicio", "Fecha fin", "Estado", "Mensaje"
             }
         ));
-        jScrollPane2.setViewportView(jTable1);
+        jScrollPane2.setViewportView(tblRegistroU);
 
         jLabel5.setText("Registro de solicitudes:");
 
@@ -218,22 +218,22 @@ public class frmRegular extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void txtTipoLActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoLActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_txtTipoLActionPerformed
 
     private void btnEnviarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarActionPerformed
-        String tipo = jComboBox1.getName();
-        String fechaInicio = jDateChooser1.getDateFormatString();
-        String fechaFin = jDateChooser2.getDateFormatString();
+        String tipo = txtTipoL.getName();
+        String fechaInicio = datFinicio.getDateFormatString();
+        String fechaFin = datFfin.getDateFormatString();
         
         Licencia l = new Licencia();
         
-        jTable1.addRowSelectionInterval(1, 3);
+        tblRegistroU.addRowSelectionInterval(1, 3);
         
-        jComboBox1.getName();
-        jDateChooser1.getDateFormatString();
-        jDateChooser2.getDateFormatString();      
+        txtTipoL.getName();
+        datFinicio.getDateFormatString();
+        datFfin.getDateFormatString();      
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
@@ -252,9 +252,8 @@ public class frmRegular extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnEnviar;
     public javax.swing.JButton btnsalir;
-    public javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
+    public com.toedter.calendar.JDateChooser datFfin;
+    public com.toedter.calendar.JDateChooser datFinicio;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -262,13 +261,14 @@ public class frmRegular extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTable jTable1;
-    public javax.swing.JTextArea jTextArea1;
     private javax.swing.JLabel lblSubtitulo1;
     public javax.swing.JLabel lblsubtitulo;
     private javax.swing.JLabel lbltitulo;
     private javax.swing.JPanel panRegistro;
     private javax.swing.JPanel panSolicitud;
     private javax.swing.JPanel panTitulo;
+    public javax.swing.JTable tblRegistroU;
+    public javax.swing.JTextArea txtJust;
+    public javax.swing.JComboBox<String> txtTipoL;
     // End of variables declaration//GEN-END:variables
 }

@@ -18,5 +18,4 @@ public class LicenciaTipo {
         return motivo;
     }
 
-    // Otros métodos y lógica adicional según sea necesario
 }
