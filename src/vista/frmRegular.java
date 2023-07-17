@@ -14,10 +14,10 @@ import javax.swing.JOptionPane;
 
 public class frmRegular extends javax.swing.JFrame {
     
-    private final EmpleadoRegular modelo;
-    private final ControladorRegular controladorRegular;
+//    private final EmpleadoRegular modelo;
+//    private final ControladorRegular controladorRegular;
 
-    public frmRegular(EmpleadoRegular modelo) {
+    public frmRegular() {
         initComponents();
  //       this.modelo = modelo;
  //       this.controladorRegular = new ControladorRegular(modelo, this);
@@ -249,11 +249,11 @@ public class frmRegular extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
-        frmLogin flogin = new frmLogin();
+ /*       frmLogin flogin = new frmLogin();
         ControladorLogin controlador = new ControladorLogin(configuracion.Datos.usuarios, flogin);
         controlador.iniciar();
 
-        this.dispose();
+        this.dispose();*/
     }//GEN-LAST:event_btnsalirActionPerformed
 
   /*  public static void main(String args[]) {
