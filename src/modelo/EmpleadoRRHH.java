@@ -9,11 +9,5 @@ public class EmpleadoRRHH extends Empleado {
         this.accesibilidad = accesibilidad;
     }
 
-    public String getAccesibilidad() {
-        return accesibilidad;
-    }
 
-    public void setAccesibilidad(String accesibilidad) {
-        this.accesibilidad = accesibilidad;
-    }
 }

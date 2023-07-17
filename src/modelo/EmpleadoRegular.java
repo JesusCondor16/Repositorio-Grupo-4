@@ -19,7 +19,7 @@ public class EmpleadoRegular extends Empleado {
 
     public void solicitarLicencia(String motivo, String tipo) {
         // Crear una nueva solicitud de licencia y agregarla a la lista de solicitudes
-        String[] solicitud = new String[]{motivo, tipo, "", "Pendiente"}; // Agregar más información de ser necesario
+        String[] solicitud = new String[]{motivo, tipo, "", "Pendiente"}; 
         solicitudesLicencia.add(solicitud);
     }
 

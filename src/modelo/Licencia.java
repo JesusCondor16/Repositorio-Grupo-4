@@ -1,68 +1,78 @@
-
 package modelo;
 
 import java.util.Date;
 
 public class Licencia {
-    private Date fechaSolicitud;
-    private boolean estado;
+    private String departamento;
     private Date fechaInicio;
     private Date fechaFin;
+    private EmpleadoRegular empleado;
+    private String estado;
+    private String justificacion;
+    private String razon;
 
-    public Licencia(Date fechaSolicitud, boolean estado, Date fechaInicio, Date fechaFin) {
-        this.fechaSolicitud = fechaSolicitud;
-        this.estado = estado;
+    public Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion) {
+        this.departamento = departamento;
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
-    }
-
-    public Licencia() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public void cambiarEstado(boolean estado) {
+        this.empleado = empleado;
         this.estado = estado;
+        this.justificacion = justificacion;
     }
 
-    public void revisarLicencia() {
-        // Lógica de revisión de la licencia
+    public String getDepartamento() {
+        return departamento;
     }
 
-    public void aceptarLicencia() {
-        // Lógica de aceptar la licencia
-    }
-
-    public void denegarLicencia() {
-        // Lógica de denegar la licencia
-    }
-
-    // Getters y setters
-
-    public Date getFechaSolicitud() {
-        return fechaSolicitud;
-    }
-
-    public boolean getEstado() {
-        return estado;
+    public void setDepartamento(String departamento) {
+        this.departamento = departamento;
     }
 
     public Date getFechaInicio() {
         return fechaInicio;
     }
 
+    public void setFechaInicio(Date fechaInicio) {
+        this.fechaInicio = fechaInicio;
+    }
+
     public Date getFechaFin() {
         return fechaFin;
     }
-    
-    public Object[] toArray(){
-        Object[] obj = new Object[3];
-        
-        obj[0] = estado;
-        obj[1] = fechaInicio;
-        obj[2] = fechaFin;
-        
-        return obj;
-    }
-    // Otros métodos y lógica adicional según sea necesario
-}
 
+    public void setFechaFin(Date fechaFin) {
+        this.fechaFin = fechaFin;
+    }
+
+    public EmpleadoRegular getEmpleado() {
+        return empleado;
+    }
+
+    public void setEmpleado(EmpleadoRegular empleado) {
+        this.empleado = empleado;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
+    public String getJustificacion() {
+        return justificacion;
+    }
+
+    public void setJustificacion(String justificacion) {
+        this.justificacion = justificacion;
+    }
+
+    public String getRazon() {
+        return razon;
+    }
+
+    public void setRazon(String razon) {
+        this.razon = razon;
+    }
+}

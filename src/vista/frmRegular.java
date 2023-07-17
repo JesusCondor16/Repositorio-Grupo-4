@@ -2,7 +2,8 @@
 package vista;
 
 import modelo.Licencia;
-
+import modelo.Empleado;
+import modelo.EmpleadoRegular;
 
 public class frmRegular extends javax.swing.JFrame {
 
@@ -227,13 +228,13 @@ public class frmRegular extends javax.swing.JFrame {
         String fechaInicio = datFinicio.getDateFormatString();
         String fechaFin = datFfin.getDateFormatString();
         
-        Licencia l = new Licencia();
-        
+      //  Licencia licencia = new Licencia("", datFinicio, datFfin, "", "Pendiente", txtJust);
+
         tblRegistroU.addRowSelectionInterval(1, 3);
-        
+
         txtTipoL.getName();
         datFinicio.getDateFormatString();
-        datFfin.getDateFormatString();      
+        datFfin.getDateFormatString();     
     }//GEN-LAST:event_btnEnviarActionPerformed
 
     private void btnsalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsalirActionPerformed
