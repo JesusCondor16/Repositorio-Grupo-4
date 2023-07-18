@@ -43,7 +43,8 @@ public class ControladorRRHH {
                     lice.setEstado("Aprobado");
                     lice.setRazon(vista.txtRazon.getText());
                     modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
-                    actualizarTablaSolicitudes();
+
+                    actualizarTablaRRHH();
                 }
             }
         });
@@ -56,7 +57,8 @@ public class ControladorRRHH {
                     lice.setEstado("Rechazado");
                     lice.setRazon(vista.txtRazon.getText());
                     modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
-                    actualizarTablaSolicitudes();
+                    
+                    actualizarTablaRRHH();
                 }
             }
         });
@@ -125,5 +127,23 @@ public class ControladorRRHH {
         DefaultTableModel model = (DefaultTableModel) vista.tblSolicitudes.getModel();
         model.setDataVector(datos, new Object[]{"Departamento","Fecha Inicio" ,"Fecha Fin", "Empleado", "Estado","tipo","Razon"});
         
+    }
+    public void actualizarTablaRRHH(){
+        
+        List<String[]> solicitudes = modelo.getSolicitudesLicenciaRRHH();
+        Object[][] datos = new Object[solicitudes.size()][8];
+
+        for (int i = 0; i < solicitudes.size(); i++) {
+            String[] solicitud = solicitudes.get(i);
+            datos[0][0] = solicitud[0]; // Depa
+            datos[0][1] = solicitud[2]; // FechaInicio
+            datos[0][2] = solicitud[3]; // Fecha Final
+            datos[0][3] = solicitud[6]; // Nombre
+            datos[0][4] = solicitud[1]; // Estado
+            datos[0][5] = solicitud[5]; // tipo
+            datos[0][6] = solicitud[7]; // razon
+        }
+        DefaultTableModel model = (DefaultTableModel) vista.tblSolicitudes.getModel();
+        model.setDataVector(datos, new Object[]{"Departamento","Fecha Inicio" ,"Fecha Fin", "Empleado", "Estado","tipo","Razon"});
     }
 }
