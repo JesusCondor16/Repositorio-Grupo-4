@@ -22,15 +22,17 @@ public class EmpleadoRegular extends Empleado implements Serializable{
         return departamento;
     }
 
-    public void solicitarLicencia(Date fechaInicio,Date fechaFin,EmpleadoRegular modelo,String motivo, String tipo) {
+    public void solicitarLicencia(Date fechaInicio,Date fechaFin,EmpleadoRegular modelo,String motivo, String tipo,String estado) {
         // Crear una nueva solicitud de licencia y agregarla a la lista de solicitudes
+        if(estado==null)
+            estado="Pendiente";
         //Licencia(String departamento, Date fechaInicio, Date fechaFin, EmpleadoRegular empleado, String estado, String justificacion, String tipo)
-        Licencia solicitud = new Licencia(departamento, fechaInicio, fechaFin, modelo, "Pendiente", motivo, tipo,"--");
+        Licencia solicitud = new Licencia(departamento, fechaInicio, fechaFin, modelo, estado, motivo, tipo,"--");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String fechaInicioString = dateFormat.format(solicitud.getFechaInicio());
         String fechaFinalString = dateFormat.format(solicitud.getFechaFin());
  
-        solicitudesLicencia.add(new String[]{departamento,"Pendiente",fechaInicioString,fechaFinalString,motivo,tipo});
+        solicitudesLicencia.add(new String[]{departamento,estado,fechaInicioString,fechaFinalString,motivo,tipo});
     }
 
     public List<String[]> getSolicitudesLicencia() {

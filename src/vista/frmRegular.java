@@ -46,7 +46,9 @@ public class frmRegular extends javax.swing.JFrame {
         panRegistro = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblRegistroU = new javax.swing.JTable();
-        jLabel5 = new javax.swing.JLabel();
+        lblSub3 = new javax.swing.JLabel();
+        lblRazon = new javax.swing.JLabel();
+        txtRazon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -187,7 +189,11 @@ public class frmRegular extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblRegistroU);
 
-        jLabel5.setText("Registro de solicitudes:");
+        lblSub3.setText("Registro de solicitudes:");
+
+        lblRazon.setText("Razón:");
+
+        txtRazon.setText("...");
 
         javax.swing.GroupLayout panRegistroLayout = new javax.swing.GroupLayout(panRegistro);
         panRegistro.setLayout(panRegistroLayout);
@@ -196,18 +202,24 @@ public class frmRegular extends javax.swing.JFrame {
             .addGroup(panRegistroLayout.createSequentialGroup()
                 .addGap(41, 41, 41)
                 .addGroup(panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(75, Short.MAX_VALUE))
+                    .addComponent(lblRazon)
+                    .addComponent(lblSub3)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 909, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtRazon, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panRegistroLayout.setVerticalGroup(
             panRegistroLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panRegistroLayout.createSequentialGroup()
-                .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel5)
+                .addContainerGap(36, Short.MAX_VALUE)
+                .addComponent(lblSub3)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(75, 75, 75))
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblRazon)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(txtRazon)
+                .addGap(158, 158, 158))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -274,9 +286,10 @@ public class frmRegular extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblRazon;
+    private javax.swing.JLabel lblSub3;
     private javax.swing.JLabel lblSubtitulo1;
     public javax.swing.JLabel lblsubtitulo;
     private javax.swing.JLabel lbltitulo;
@@ -285,6 +298,7 @@ public class frmRegular extends javax.swing.JFrame {
     private javax.swing.JPanel panTitulo;
     public javax.swing.JTable tblRegistroU;
     public javax.swing.JTextArea txtJust;
+    public javax.swing.JLabel txtRazon;
     public javax.swing.JComboBox<String> txtTipoL;
     // End of variables declaration//GEN-END:variables
 }

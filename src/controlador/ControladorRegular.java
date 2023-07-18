@@ -20,8 +20,27 @@ public class ControladorRegular {
     public ControladorRegular(EmpleadoRegular modelo, frmRegular vista) {
         this.modelo = modelo;
         this.vista = vista;
+        try {
+            Licencia licent = (Licencia)librerias.SerializadoraGen.deserializar("licencia");
+            if(licent!=null){
+                if(licent.getEmpleado().getUsuario().equals(modelo.getUsuario())){
+                modelo.solicitarLicencia(licent.getFechaInicio(),licent.getFechaFin(),licent.getEmpleado(),licent.getJustificacion(), licent.getTipo(),licent.getEstado());
+                actualizarTablaSolicitudes();
+                this.vista.tblRegistroU.getSelectionModel().addListSelectionListener(e -> {
+                int filaSeleccionada = vista.tblRegistroU.getSelectedRow();
+                if (filaSeleccionada != -1) {
+                vista.txtRazon.setText(licent.getRazon());
+                }
+                });    
+                }
+                
+                
+            }
+        } catch (Exception e) {
+        }
 
         vista.lblsubtitulo.setText("Empleado: " + modelo.getNombre());
+        
         this.vista.btnsalir.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -29,7 +48,7 @@ public class ControladorRegular {
                 ControladorLogin controlador =
                         new ControladorLogin(configuracion.Datos.usuarios, flogin);
                 controlador.iniciar();
-
+                 
                 vista.dispose();
             }
         });
@@ -46,7 +65,7 @@ public class ControladorRegular {
                     JOptionPane.showMessageDialog(vista, "Por favor, ingresa un motivo de licencia.", "Error", JOptionPane.ERROR_MESSAGE);
                 } else {
                     librerias.SerializadoraGen.serializar("licencia",new Licencia(modelo.getDepartamento(), fechaInicio, fechaFin, modelo, "Pendiente", motivo, tipo,"--"));
-                    modelo.solicitarLicencia(fechaInicio,fechaFin,modelo,motivo, tipo);
+                    modelo.solicitarLicencia(fechaInicio,fechaFin,modelo,motivo, tipo,"Pendiente");
                     actualizarTablaSolicitudes();
                     
                 }

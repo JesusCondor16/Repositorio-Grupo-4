@@ -45,6 +45,7 @@ public class ControladorRRHH {
                     modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
 
                     actualizarTablaRRHH();
+                    librerias.SerializadoraGen.serializar("licencia",lice);
                 }
             }
         });
@@ -59,6 +60,7 @@ public class ControladorRRHH {
                     modelo.solicitarLicenciaRRHH(lice.getDepartamento(), lice.getFechaInicio(), lice.getFechaFin(), lice.getEmpleado(),lice.getEstado() ,lice.getJustificacion(), lice.getTipo(),lice.getRazon());
                     
                     actualizarTablaRRHH();
+                    librerias.SerializadoraGen.serializar("licencia",lice);
                 }
             }
         });
